@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+// import HelloWorld from '@/components/HelloWorld'
 import Login from '@/views/login'
 import Dailycheck from '@/views/dailycheck'
 import Digitmap from '@/views/digitmap'
@@ -34,4 +34,7 @@ const router = new Router({
   }]
 })
 
+router.beforeEach((to, from, next) => {
+  next()
+})
 export default router
