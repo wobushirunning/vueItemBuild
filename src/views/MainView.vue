@@ -78,12 +78,7 @@ export default {
   components: {
     echarts
   },
-  created: function () {
-
-  },
-  computed: {
-
-  },
+  created: function () {},
   mounted() {
     this.dramChart()
     this.dramPieChart()
@@ -160,22 +155,8 @@ export default {
       }
     },
     dramPieChart() {
-      // this.barColor()
-      // var colorArray = this.colorArr
-      var hideStyle = {
-        normal: {
-          color: '#fff', // 未完成的圆环的颜色
-          label: {
-            show: false
-          },
-          labelLine: {
-            show: false
-          }
-        },
-        emphasis: {
-          show: false
-        }
-      }
+      this.barColor()
+      var colorArray = this.colorArr
       for (var item of this.chartsPie) {
         var id = item.id
         var myChart = echarts.init(document.getElementById(id))
@@ -198,24 +179,35 @@ export default {
             clockWise: false, // 顺时针
             radius: [maxRadius, minRadius],
             label: {
-              normal: {
-                show: false,
-                position: 'inside'
-              }
+              show: false,
+              position: 'inside'
             },
             labelLine: {
-              normal: {
-                show: true
-              }
+              show: true
             },
             hoverAnimation: false,
             data: [{
               value: v.on,
-              name: 'A'
+              name: 'A',
+              itemstyle: {
+                color: function(params) {
+                  return colorArray[params.dataIndex]
+                }
+              }
             }, {
               value: v.off,
               name: 'hide',
-              itemStyle: hideStyle
+              labelLine: {
+                show: false
+              },
+              itemStyle: {
+                color: '#fff'
+              },
+              emphasis: {
+                label: {
+                  show: false
+                }
+              }
             }]
           }
           option.series.push(dataInfo)
