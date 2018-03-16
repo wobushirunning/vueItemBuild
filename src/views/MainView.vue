@@ -78,6 +78,7 @@ export default {
   components: {
     echarts
   },
+  props: ['row', 'col'],
   created: function () {},
   mounted() {
     this.dramChart()
@@ -185,15 +186,15 @@ export default {
             labelLine: {
               show: true
             },
-            hoverAnimation: false,
+            itemstyle: {
+              color: function(params) {
+                return colorArray[params.dataIndex]
+              }
+            },
+            hoverAnimation: true,
             data: [{
               value: v.on,
-              name: 'A',
-              itemstyle: {
-                color: function(params) {
-                  return colorArray[params.dataIndex]
-                }
-              }
+              name: 'A'
             }, {
               value: v.off,
               name: 'hide',
@@ -275,4 +276,3 @@ export default {
     float: left;
   }
 </style>
-

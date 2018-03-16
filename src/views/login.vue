@@ -1,28 +1,25 @@
 <template>
-  <div class="chartA">
-    <div class="chart-up">
-      <div class="up-title">
-        <div class="tip-title">3.2.1 全省所有玩法期报 (分地市含第三方)</div>
-        <ul class="tip-ul">
-          <li v-for="item in tips" :key="item.id" class="tip-li">
-            <div><span class="tip-color" :style="{ background: item.color}"></span><span class="tip-name">{{ item.name }}</span></div>
-          </li>
+  <div class="chartB">
+    <div class="chart-left">
+      <div id="chart-left-a" style="width:40%;height:100%"></div>
+      <div class="chart-left-b" style="width:20%;height:100%">
+        <ul class="year-list">
+          <li v-for="(item, index) in yearList" :key="index" class="year-info" :style="{ color: item.color }" @click="selYear(index)">{{item.name}}</li>
         </ul>
       </div>
-      <div class="up-content">
-        <div v-for="(item, index) in charts" :key="index" class="up-content-chart">
-          <div :id="idNameUp(index)" style="width: 100%;height: 100%;"></div>
-        </div>
-      </div>
+      <div id="chart-left-c" style="width:40%;height:100%"></div>
     </div>
-    <div class="chart-down">
-      <div class="down-title">
-        <div class="tip-title">3.2.2 全省所有玩法日报 (分地市含第三方)</div>
+    <div class="chart-right">
+      <div class="right-top">
+        <div class="right-top-style">3.2.5 全省历年销量及增幅</div>
+        <div id="right-top-chart" style="width:100%;height:100%;min-height: 300px;"></div>
       </div>
-      <div class="down-content">
-        <div v-for="(item, index) in charts" :key="index" class="down-content-chart">
-          <div :id="idNameDowm(index)" style="width: 100%;height: 100%;"></div>
-        </div>
+      <ul class="area-list">
+        <li v-for="(item, index) in areaList" :key="index" class="area-info" :style="{ color: item.color }" @click="selArea(index)">{{item.name}}</li>
+      </ul>
+      <div class="right-end">
+        <div class="right-end-style">3.2.5 全省历年销量及增幅 (可分地市分玩法)</div>
+        <div id="right-end-chart" style="width:100%;height:100%;min-height: 300px;"></div>
       </div>
     </div>
   </div>
@@ -33,246 +30,231 @@ import echarts from 'echarts'
 export default {
   data () {
     return {
-      tips: [
-        {name: '七彩乐', color: '#6FE0D0', id: 0},
-        {name: '刮刮乐', color: '#777FD5', id: 1},
-        {name: '福彩3D', color: '#769BB5', id: 2},
-        {name: '幸运五彩', color: '#C4BD6D', id: 3},
-        {name: '好运射击', color: '#EAA546', id: 4},
-        {name: '趣味高尔夫', color: '#DB6251', id: 5},
-        {name: '连环夺宝', color: '#56C0F1', id: 6},
-        {name: '三江风光', color: '#BE60C1', id: 7},
-        {name: '开心一刻', color: '#7FC5BD', id: 8}
-      ],
-      charts: [
-        {a: 1, b: 2},
-        {a: 1, b: 2},
-        {a: 1, b: 2},
-        {a: 1, b: 2},
-        {a: 1, b: 2},
-        {a: 1, b: 2},
-        {a: 1, b: 2},
-        {a: 1, b: 2},
-        {a: 1, b: 2},
-        {a: 1, b: 2},
-        {a: 1, b: 2},
-        {a: 1, b: 2}
-      ],
-      chartsPie: [
-        {name: 0, value: [{on: 95, off: 5}, {on: 85, off: 15}, {on: 75, off: 25}, {on: 65, off: 30}, {on: 55, off: 45}, {on: 45, off: 55}, {on: 35, off: 65}, {on: 25, off: 75}, {on: 15, off: 85}]},
-        {name: 1, value: [{on: 95, off: 5}, {on: 85, off: 15}, {on: 75, off: 25}, {on: 65, off: 30}, {on: 55, off: 45}, {on: 45, off: 55}, {on: 35, off: 65}, {on: 25, off: 75}, {on: 15, off: 85}]},
-        {name: 2, value: [{on: 95, off: 5}, {on: 85, off: 15}, {on: 75, off: 25}, {on: 65, off: 30}, {on: 55, off: 45}, {on: 45, off: 55}, {on: 35, off: 65}, {on: 25, off: 75}, {on: 15, off: 85}]},
-        {name: 3, value: [{on: 95, off: 5}, {on: 85, off: 15}, {on: 75, off: 25}, {on: 65, off: 30}, {on: 55, off: 45}, {on: 45, off: 55}, {on: 35, off: 65}, {on: 25, off: 75}, {on: 15, off: 85}]},
-        {name: 4, value: [{on: 95, off: 5}, {on: 85, off: 15}, {on: 75, off: 25}, {on: 65, off: 30}, {on: 55, off: 45}, {on: 45, off: 55}, {on: 35, off: 65}, {on: 25, off: 75}, {on: 15, off: 85}]},
-        {name: 5, value: [{on: 95, off: 5}, {on: 85, off: 15}, {on: 75, off: 25}, {on: 65, off: 30}, {on: 55, off: 45}, {on: 45, off: 55}, {on: 35, off: 65}, {on: 25, off: 75}, {on: 15, off: 85}]},
-        {name: 6, value: [{on: 95, off: 5}, {on: 85, off: 15}, {on: 75, off: 25}, {on: 65, off: 30}, {on: 55, off: 45}, {on: 45, off: 55}, {on: 35, off: 65}, {on: 25, off: 75}, {on: 15, off: 85}]},
-        {name: 7, value: [{on: 95, off: 5}, {on: 85, off: 15}, {on: 75, off: 25}, {on: 65, off: 30}, {on: 55, off: 45}, {on: 45, off: 55}, {on: 35, off: 65}, {on: 25, off: 75}, {on: 15, off: 85}]},
-        {name: 8, value: [{on: 95, off: 5}, {on: 85, off: 15}, {on: 75, off: 25}, {on: 65, off: 30}, {on: 55, off: 45}, {on: 45, off: 55}, {on: 35, off: 65}, {on: 25, off: 75}, {on: 15, off: 85}]},
-        {name: 9, value: [{on: 95, off: 5}, {on: 85, off: 15}, {on: 75, off: 25}, {on: 65, off: 30}, {on: 55, off: 45}, {on: 45, off: 55}, {on: 35, off: 65}, {on: 25, off: 75}, {on: 15, off: 85}]},
-        {name: 10, value: [{on: 95, off: 5}, {on: 85, off: 15}, {on: 75, off: 25}, {on: 65, off: 30}, {on: 55, off: 45}, {on: 45, off: 55}, {on: 35, off: 65}, {on: 25, off: 75}, {on: 15, off: 85}]},
-        {name: 11, value: [{on: 95, off: 5}, {on: 85, off: 15}, {on: 75, off: 25}, {on: 65, off: 30}, {on: 55, off: 45}, {on: 45, off: 55}, {on: 35, off: 65}, {on: 25, off: 75}, {on: 15, off: 85}]}
-      ],
-      colorArr: []
-    }
-  },
-  components: {
-    echarts
-  },
-  created: function () {},
-  mounted() {
-    this.dramChart()
-    this.dramPieChart()
-  },
-  methods: {
-    idNameUp(index) {
-      this.charts[index].id = 'chart_up_' + index
-      return 'chart_up_' + index
-    },
-    idNameDowm(index) {
-      this.chartsPie[index].id = 'chart_down_' + index
-      return 'chart_down_' + index
-    },
-    barColor() {
-      for (var item of this.tips) {
-        this.colorArr.push(item.color)
-      }
-    },
-    dramChart() {
-      this.barColor()
-      var colorArray = this.colorArr
-      for (var item of this.charts) {
-        var id = item.id
-        var myChart = echarts.init(document.getElementById(id))
-        var option = {
-          tooltip: {
-            trigger: 'axis',
-            axisPointer: {
-              type: 'shadow'
-            }
-          },
-          legend: {
-            data: []
-          },
-          grid: {
-            containLabel: true,
-            top: 10
-          },
-          xAxis: {
-            type: 'value',
-            inverse: true,
-            boundaryGap: [0, 0.01],
-            show: false
-          },
-          yAxis: {
+      leftOption: {
+        title: {
+          text: '3.2.3 全国福彩销量上年排名'
+        },
+        tooltip: {},
+        legend: {
+          data: []
+        },
+        grid: {
+          left: '3%',
+          right: '4%',
+          bottom: '3%',
+          containLabel: true
+        },
+        color: ['#74A0BC'],
+        xAxis: {
+          type: 'value',
+          boundaryGap: [0, 0.01],
+          show: false
+        },
+        yAxis: [
+          {
             type: 'category',
-            data: [18203, 23489, 29034, 104970, 131744, 630230, 18203, 23489, 29034],
+            axisTick: {
+              show: false
+            },
+            axisLine: {
+              show: true
+            },
+            axisLabel: {
+              interval: 0
+            },
+            splitArea: {
+              show: false
+            },
+            offset: 5,
+            data: ['内蒙古', '黑龙江', '山西', '福建', '上海', '浙江']
+          }, {
+            type: 'category',
             axisTick: {
               show: false
             },
             axisLabel: {
               interval: 0
             },
-            position: 'right',
-            axisLine: {
-              onZero: false
-            },
-            offset: 10
-          },
-          series: [
-            {
-              name: '2011年',
-              type: 'bar',
-              itemStyle: {
-                color: function(params) {
-                  return colorArray[params.dataIndex]
-                }
-              },
-              data: [18203, 23489, 29034, 104970, 131744, 630230, 18203, 23489, 29034]
-            }
-          ]
-        }
-        myChart.setOption(option)
-      }
-    },
-    dramPieChart() {
-      this.barColor()
-      var colorArray = this.colorArr
-      for (var item of this.chartsPie) {
-        var id = item.id
-        var myChart = echarts.init(document.getElementById(id))
-        var option = {
-          backgroundColor: '#fff',
-          legend: {
-            data: []
-          },
-          grid: {
-            top: 10
-          },
-          series: []
-        }
-        item.value.map((v, i) => {
-          var maxRadius = 90 - (i * 5) - (i * 4)
-          var minRadius = maxRadius - 5
-          var dataInfo = {
-            name: 'Line 1',
-            type: 'pie',
-            clockWise: false, // 顺时针
-            radius: [maxRadius, minRadius],
-            label: {
-              show: false,
-              position: 'inside'
-            },
-            labelLine: {
-              show: true
-            },
-            hoverAnimation: false,
-            data: [{
-              value: v.on,
-              name: 'A',
-              itemstyle: {
-                color: function(params) {
-                  return colorArray[params.dataIndex]
-                }
-              }
-            }, {
-              value: v.off,
-              name: 'hide',
-              labelLine: {
-                show: false
-              },
-              itemStyle: {
-                color: '#fff'
-              },
-              emphasis: {
-                label: {
-                  show: false
-                }
-              }
-            }]
+            data: [18203, 23489, 29034, 104970, 131744, 630230]
           }
-          option.series.push(dataInfo)
-        })
-        myChart.setOption(option)
-      }
+        ],
+        series: [
+          {
+            name: '2017年',
+            type: 'bar',
+            barWidth: 10,
+            itemStyle: {},
+            emphasis: {
+              itemStyle: {
+                borderWidth: 1,
+                shadowBlur: 10,
+                shadowOffsetX: 0,
+                shadowOffsetY: 0,
+                shadowColor: 'rgba(0,0,0,0.5)'
+              }
+            },
+            data: [18203, 23489, 29034, 104970, 131744, 630230]
+          }
+        ]
+      },
+      rightOption: {
+        tooltip: {
+          trigger: 'axis'
+        },
+        legend: {
+          data: ['七彩乐', '刮刮乐', '福彩3D', '双色球']
+        },
+        grid: {
+          left: '3%',
+          right: '4%',
+          bottom: '3%',
+          containLabel: true
+        },
+        xAxis: {
+          type: 'category',
+          boundaryGap: false,
+          splitLine: { show: true },
+          data: ['2012', '2013', '2014', '2015', '2016', '2017', '2018']
+        },
+        yAxis: [
+          {
+            type: 'value',
+            axisTick: {
+              show: false
+            },
+            position: 'right'
+          },
+          {type: 'value'}
+        ],
+        series: [
+          {
+            name: '七彩乐',
+            type: 'line',
+            areaStyle: {},
+            data: [120, 132, 101, 134, 90, 230, 210]
+          },
+          {
+            name: '刮刮乐',
+            type: 'line',
+            areaStyle: {},
+            data: [220, 182, 191, 234, 290, 330, 310]
+          },
+          {
+            name: '福彩3D',
+            type: 'line',
+            areaStyle: {},
+            data: [150, 232, 201, 154, 190, 330, 410]
+          },
+          {
+            name: '双色球',
+            type: 'line',
+            areaStyle: {},
+            data: [320, 332, 301, 334, 390, 330, 320]
+          }
+        ]
+      },
+      yearList: [
+        {name: 2012, color: 'black'},
+        {name: 2013, color: 'black'},
+        {name: 2014, color: 'black'},
+        {name: 2015, color: 'black'},
+        {name: 2016, color: 'black'},
+        {name: 2017, color: 'black'},
+        {name: 2018, color: 'red'}
+      ],
+      areaList: [
+        {name: '西安', color: 'red'},
+        {name: '宝鸡', color: 'black'},
+        {name: '咸阳', color: 'black'},
+        {name: '延安', color: 'black'},
+        {name: '铜川', color: 'black'},
+        {name: '渭南', color: 'black'},
+        {name: '榆林', color: 'black'}
+      ]
+    }
+  },
+  components: {
+    echarts
+  },
+  props: ['row', 'col'],
+  created: function () {},
+  mounted() {
+    this.dramChartLa()
+    this.dramChartLc()
+    this.dramChartRa()
+    this.dramChartRc()
+  },
+  methods: {
+    dramChartLa () {
+      var myChart = echarts.init(document.getElementById('chart-left-a'))
+      myChart.setOption(this.leftOption)
+    },
+    dramChartLc () {
+      var myChart = echarts.init(document.getElementById('chart-left-c'))
+      myChart.setOption(this.leftOption)
+    },
+    selYear (data) {
+      this.yearList.map(v => {
+        v.color = 'black'
+      })
+      this.yearList[data].color = 'red'
+    },
+    selArea (data) {
+      this.areaList.map(v => {
+        v.color = 'black'
+      })
+      this.areaList[data].color = 'red'
+    },
+    dramChartRa () {
+      var myChart = echarts.init(document.getElementById('right-top-chart'))
+      myChart.setOption(this.rightOption)
+    },
+    dramChartRc () {
+      var myChart = echarts.init(document.getElementById('right-end-chart'))
+      myChart.setOption(this.rightOption)
     }
   }
 }
 </script>
 
 <style scoped>
-  .chartA {
-    width: 100%;
-    height: 100%;
-  }
-  .chart-up, .chart-down {
-
-  }
-  .up-title, .down-title {
-    width: 100%;
-    height: 24px;
-    line-height: 24px;
-  }
-  .tip-ul {
-    float: left;
-    list-style: none;
-    width: 65%;
-  }
-  .tip-li {
-    float: left;
-    margin-right: 10px;
-  }
-  .tip-color {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    border: 1px solid transparent;
-    border-radius: 50%;
-    margin-right: 10px;
-  }
-  .tip-title {
-    float: left;
-    width: 35%;
-    text-align: center;
-    font-size: 16px;
-    font-weight: 400;
-  }
-  .up-content {
-    height: 300px;
-    margin-top: 20px;
-  }
-  .down-content {
-    height: 600px;
-    margin-top: 10px;
-  }
-  .up-content-chart {
-    width: 8.3333333%;
-    height: 300px;
-    float: left;
-  }
-  .down-content-chart {
-    width: 16.6666666%;
-    height: 300px;
-    float: left;
-  }
+ .chartB {
+  width: 100%;
+  height: 100%;
+ }
+ .chart-left {
+   width: 50%;
+   height: 500px;
+   float: left;
+ }
+ .chart-right {
+   width: 50%;
+   height: 500px;
+   float: left;
+ }
+ #chart-left-a, .chart-left-b, #chart-left-c {
+   float: left;
+ }
+ .year-list {
+   list-style: none;
+   margin-top: 60px;
+ }
+ .year-info {
+   height: 40px;
+   line-height: 40px;
+   cursor: pointer;
+ }
+ .area-list {
+   list-style: none;
+   margin-top: 15px;
+   height: 40px;
+   margin-left: 25px;
+ }
+ .area-info {
+   width: 50px;
+   height: 40px;
+   line-height: 40px;
+   cursor: pointer;
+   float: left;
+ }
 </style>
-

@@ -10,11 +10,11 @@ import Selfhelpbank from '@/views/selfhelpbank'
 Vue.use(Router)
 
 const router = new Router({
+  mode: 'history',
   routes: [{
     path: '/login',
     name: 'login',
-    component: Login,
-    meta: { requiresAuth: true }
+    component: Login
   }, {
     path: '/',
     name: '主页',
