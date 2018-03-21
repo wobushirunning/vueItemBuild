@@ -59,18 +59,18 @@ export default {
         {a: 1, b: 2}
       ],
       chartsPie: [
-        {name: 0, value: [{on: 95, off: 5}, {on: 85, off: 15}, {on: 75, off: 25}, {on: 65, off: 30}, {on: 55, off: 45}, {on: 45, off: 55}, {on: 35, off: 65}, {on: 25, off: 75}, {on: 15, off: 85}]},
-        {name: 1, value: [{on: 95, off: 5}, {on: 85, off: 15}, {on: 75, off: 25}, {on: 65, off: 30}, {on: 55, off: 45}, {on: 45, off: 55}, {on: 35, off: 65}, {on: 25, off: 75}, {on: 15, off: 85}]},
-        {name: 2, value: [{on: 95, off: 5}, {on: 85, off: 15}, {on: 75, off: 25}, {on: 65, off: 30}, {on: 55, off: 45}, {on: 45, off: 55}, {on: 35, off: 65}, {on: 25, off: 75}, {on: 15, off: 85}]},
-        {name: 3, value: [{on: 95, off: 5}, {on: 85, off: 15}, {on: 75, off: 25}, {on: 65, off: 30}, {on: 55, off: 45}, {on: 45, off: 55}, {on: 35, off: 65}, {on: 25, off: 75}, {on: 15, off: 85}]},
-        {name: 4, value: [{on: 95, off: 5}, {on: 85, off: 15}, {on: 75, off: 25}, {on: 65, off: 30}, {on: 55, off: 45}, {on: 45, off: 55}, {on: 35, off: 65}, {on: 25, off: 75}, {on: 15, off: 85}]},
-        {name: 5, value: [{on: 95, off: 5}, {on: 85, off: 15}, {on: 75, off: 25}, {on: 65, off: 30}, {on: 55, off: 45}, {on: 45, off: 55}, {on: 35, off: 65}, {on: 25, off: 75}, {on: 15, off: 85}]},
-        {name: 6, value: [{on: 95, off: 5}, {on: 85, off: 15}, {on: 75, off: 25}, {on: 65, off: 30}, {on: 55, off: 45}, {on: 45, off: 55}, {on: 35, off: 65}, {on: 25, off: 75}, {on: 15, off: 85}]},
-        {name: 7, value: [{on: 95, off: 5}, {on: 85, off: 15}, {on: 75, off: 25}, {on: 65, off: 30}, {on: 55, off: 45}, {on: 45, off: 55}, {on: 35, off: 65}, {on: 25, off: 75}, {on: 15, off: 85}]},
-        {name: 8, value: [{on: 95, off: 5}, {on: 85, off: 15}, {on: 75, off: 25}, {on: 65, off: 30}, {on: 55, off: 45}, {on: 45, off: 55}, {on: 35, off: 65}, {on: 25, off: 75}, {on: 15, off: 85}]},
-        {name: 9, value: [{on: 95, off: 5}, {on: 85, off: 15}, {on: 75, off: 25}, {on: 65, off: 30}, {on: 55, off: 45}, {on: 45, off: 55}, {on: 35, off: 65}, {on: 25, off: 75}, {on: 15, off: 85}]},
-        {name: 10, value: [{on: 95, off: 5}, {on: 85, off: 15}, {on: 75, off: 25}, {on: 65, off: 30}, {on: 55, off: 45}, {on: 45, off: 55}, {on: 35, off: 65}, {on: 25, off: 75}, {on: 15, off: 85}]},
-        {name: 11, value: [{on: 95, off: 5}, {on: 85, off: 15}, {on: 75, off: 25}, {on: 65, off: 30}, {on: 55, off: 45}, {on: 45, off: 55}, {on: 35, off: 65}, {on: 25, off: 75}, {on: 15, off: 85}]}
+        {name: '西安', value: [{on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}]},
+        {name: '宝鸡', value: [{on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}]},
+        {name: '咸阳', value: [{on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}]},
+        {name: '延安', value: [{on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}]},
+        {name: '铜川', value: [{on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}]},
+        {name: '商洛', value: [{on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}]},
+        {name: '渭南', value: [{on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}]},
+        {name: '汉中', value: [{on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}]},
+        {name: '安康', value: [{on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}]},
+        {name: '榆林', value: [{on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}]},
+        {name: '杨凌', value: [{on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}]},
+        {name: '沣东', value: [{on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}, {on: 80, off: 20}]}
       ],
       colorArr: []
     }
@@ -162,7 +162,19 @@ export default {
         var id = item.id
         var myChart = echarts.init(document.getElementById(id))
         var option = {
+          title: {
+            show: true,
+            text: item.name,
+            bottom: 10,
+            left: 'center',
+            textStyle: {
+              color: '#ccc',
+              align: 'center',
+              fontWeight: 'normal'
+            }
+          },
           backgroundColor: '#fff',
+          color: colorArray,
           legend: {
             data: []
           },
@@ -175,39 +187,26 @@ export default {
           var maxRadius = 90 - (i * 5) - (i * 4)
           var minRadius = maxRadius - 5
           var dataInfo = {
-            name: 'Line 1',
             type: 'pie',
+            name: 'Line 1',
+            hoverAnimation: true,
             clockWise: false, // 顺时针
-            radius: [maxRadius, minRadius],
             label: {
               show: false,
               position: 'inside'
             },
-            labelLine: {
-              show: true
-            },
-            itemstyle: {
-              color: function(params) {
-                return colorArray[params.dataIndex]
-              }
-            },
-            hoverAnimation: true,
+            radius: [maxRadius, minRadius],
             data: [{
               value: v.on,
-              name: 'A'
+              name: 'A',
+              itemStyle: {
+                color: colorArray[i]
+              }
             }, {
               value: v.off,
               name: 'hide',
-              labelLine: {
-                show: false
-              },
               itemStyle: {
                 color: '#fff'
-              },
-              emphasis: {
-                label: {
-                  show: false
-                }
               }
             }]
           }
