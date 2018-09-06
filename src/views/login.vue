@@ -214,7 +214,7 @@ export default {
       myChart.setOption(this.rightOption)
     },
     anyFun() {
-      console.log('完成功能')
+      console.log('修复功能1')
     }
   }
 }
