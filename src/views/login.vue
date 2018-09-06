@@ -212,6 +212,9 @@ export default {
     dramChartRc () {
       var myChart = echarts.init(document.getElementById('right-end-chart'))
       myChart.setOption(this.rightOption)
+    },
+    anyFun() {
+      console.log('完成功能')
     }
   }
 }
