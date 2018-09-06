@@ -217,6 +217,9 @@ export default {
       console.log('修复功能1')
       console.log('完成功能1')
       console.log('完成功能2')
+    },
+    someFun() {
+      console.log('正在开发的功能...')
     }
   }
 }
