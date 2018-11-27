@@ -12,6 +12,7 @@ export default {
       const w = dom.offsetWidth
       const h = dom.offsetHeight
       console.log(w, h, 4)
+      console.log('123')
       this.echartsDraw.resize()
     }
   },
